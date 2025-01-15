@@ -52,12 +52,17 @@ export default function Home() {
           value={location}
           onChange={(e) => setLocation(e.target.value)}
         />
-        <button
-          onClick={fetchWeather}
-          className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md"
-        >
-          Get Weather
-        </button>
+        <div className="container">
+          <button
+            onClick={fetchWeather}
+            className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md"
+          >
+            Get Weather
+          </button>
+          <button className="min-w-3 bg-red-800 hover:bg-red-500 text-white py-2 px-4 rounded-md">
+            Test button
+          </button>
+        </div>
       </div>
 
       {error && <p className="text-red-500 mt-4">{error}</p>}
