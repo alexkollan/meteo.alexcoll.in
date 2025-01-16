@@ -29,15 +29,15 @@ export default function Home() {
 
     try {
       const geoResponse = await axios.get(
-        `https://geocode.maps.co/search?q=${encodeURIComponent(location)}`
+        `http://localhost:5001/api/geocode?cityName=${encodeURIComponent(location)}`
       );
 
       if (geoResponse.data.length === 0) {
         setError('Invalid location. Please try again.');
         return;
       }
-
-      const { lat, lon } = geoResponse.data[0];
+      console.log(geoResponse.data)
+      const { lat, lon } = geoResponse.data;
 
       const response = await axios.get(
         `http://localhost:5001/api/weather?latitude=${lat}&longitude=${lon}`
@@ -90,6 +90,15 @@ export default function Home() {
           sx={{ mb: 2 }}
         >
           Get Weather
+        </Button>
+        <Button
+          fullWidth
+          variant="contained"
+          color="error"
+
+          sx={{ mb: 2 }}
+        >
+          Test Button
         </Button>
       </Box>
 
