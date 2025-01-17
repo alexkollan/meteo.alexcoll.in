@@ -28,7 +28,7 @@ router.get("/", async (req, res) => {
     const cachedData = await redisClient.get(cacheKey);
 
     if (cachedData) {
-      console.log("Serving from cache");
+      console.log("Weather Serving from cache");
       return res.json(JSON.parse(cachedData)); // Serve cached data
     }
 
@@ -52,7 +52,7 @@ router.get("/", async (req, res) => {
     };
 
     // Cache the data in Redis for 10 minutes (600 seconds)
-    await redisClient.setEx(cacheKey, 600, JSON.stringify(weatherData));
+    await redisClient.setEx(cacheKey, 6000, JSON.stringify(weatherData));
 
     console.log("Serving from API");
     res.json(weatherData);

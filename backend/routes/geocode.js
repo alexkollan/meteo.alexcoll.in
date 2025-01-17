@@ -44,7 +44,7 @@ router.get("/", async (req, res) => {
     const cachedData = await redisClient.get(cacheKey);
 
     if (cachedData) {
-      console.log("Serving from cache");
+      console.log("Geocoding Serving from cache");
       return res.json(JSON.parse(cachedData)); // Send cached response
     }
 
